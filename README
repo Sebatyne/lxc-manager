@@ -1,0 +1,36 @@
+These are bash scipts made to manager LXC containers.
+
+The idea is to easily make a container spawn, which can access the internet, and allow you to connect with ssh.
+
+LXC containers are used as Virtual Machines because they can be spawned fast, boot fast, and use a small amount of resources.
+
+This is useful for testing new apps and services, or to compile a software without polluating your own computer.
+
+
+----- +---+ +-\  +---+
+  |   |   | |  | |   | 
+  |   |   | |  | |   |
+  |   +---+ +_/  +---+
+
+######################################################################
+# lxcreate
+######################################################################
+# Arguments parser
+# Create Initial file
+# Create initial filesystem
+# Clone an existing container
+# Start it
+# Destroy instance
+# By default create a container of the same distrib as the host
+
+
+######################################################################
+# lxstart
+######################################################################
+# Get IP and write it in /etc/hosts if not present
+# write some output on success
+# Apply NAT rules only if necessary
+# Push user keys in the VM
+# Choose randomly IP (dhcp ?)
+# BRIDGE_NAME takes the value in the config file
+
