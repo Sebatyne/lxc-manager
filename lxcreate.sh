@@ -1,7 +1,9 @@
 #!/bin/bash
 
 BRIDGE_NAME="lxbr0"
-LXPATH="$HOME/.lxcontainers"
+LXPATH="/var/lib/lxc"
+DISTRIB="debian"
+VERSION="wheezy"
 
 ######################################################################
 # Argument Parser
@@ -58,13 +60,14 @@ fi
 ######################################################################
 # Main
 ######################################################################
+lxc-create -t $DISTRIB -n $VM_NAME -- -r $VERSION
+
 # Write config file
 cat > $LXPATH/$VM_NAME/config << EOF
 lxc.network.type = veth
 lxc.network.flags = up
 lxc.network.link = $BRIDGE_NAME
 lxc.rootfs = $LXPATH/$VM_NAME/rootfs
-# IP is a CIDR
 lxc.network.ipv4 = $IP
 lxc.network.ipv4.gateway = $GATEWAY_IP
 
