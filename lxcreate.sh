@@ -81,7 +81,7 @@ lxc.arch = amd64
 EOF
 
 # Allow easy ssh access
-PUBKEY="~/.ssh/id_rsa.pub"
+PUBKEY="$HOME/.ssh/id_rsa.pub"
 SSH_FOLDER="$LXPATH/$VM_NAME/rootfs/root/.ssh"
 mkdir -p $SSH_FOLDER
 if [ -f $PUBKEY ];
