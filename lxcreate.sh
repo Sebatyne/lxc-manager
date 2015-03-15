@@ -79,3 +79,15 @@ lxc.mount = $LXPATH/$VM_NAME/fstab
 lxc.utsname = $VM_NAME
 lxc.arch = amd64
 EOF
+
+# Allow easy ssh access
+PUBKEY="~/.ssh/id_rsa.pub"
+SSH_FOLDER="$LXPATH/$VM_NAME/rootfs/root/.ssh"
+mkdir -p $SSH_FOLDER
+if [ -f $PUBKEY ];
+then
+    echo "Copying ssh key into container..."
+    cp $PUBKEY $SSH_FOLDER/authorized_keys
+else
+    echo "No public ssh key found, please use \"lxc-attach -n $VM_NAME\" to change root password and connect to your VM"
+fi
